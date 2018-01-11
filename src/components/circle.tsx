@@ -2,20 +2,28 @@ import React, { PureComponent } from 'react';
 import './circle.scss';
 
 
-export interface circleProps {
+export interface CircleProps {
   className?: string;
-  offset: {
-    left: number;
-    top: number;
-  },
+  left: number;
+  top: number;
   color: string;
+  radius: number;
 }
 
-export default class Circle extends PureComponent<circleProps, {}>{
+export default class Circle extends PureComponent<CircleProps, {}>{
   render() {
-    const { offset, color: backgroundColor, className } = this.props;
+    const { left, top, color: backgroundColor, className } = this.props;
+    let { radius } = this.props;
+    let diff = (100 - radius) / 20;
+    radius /= 10;
     return (
-      <div className={`circle ${className || ''}`} style={{ ...offset, backgroundColor }}>
+      <div className={`circle ${className || ''}`} style={{
+        left: left + diff,
+        top: top + diff,
+        backgroundColor,
+        height: radius,
+        width: radius
+      }}>
       </div>
     );
   }
