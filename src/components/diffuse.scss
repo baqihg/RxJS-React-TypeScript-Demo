@@ -1,0 +1,20 @@
+.diffuse_circle{
+  margin:0;
+  animation: diffuse_animation 3s forwards;
+}
+
+@for $i from 1 through 12{
+  .container_#{$i}{
+    height:10px;
+    width:10px;
+    margin:-5px 0 0 -5px;
+    position: absolute;
+    transform: rotate(#{($i - 1)*30}deg);
+  }
+}
+
+@keyframes diffuse_animation {
+  100%{
+    transform: translate(300px,0) scale(0,0);
+  }
+}
